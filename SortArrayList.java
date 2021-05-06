@@ -167,6 +167,7 @@ import java.util.*;
 				list.set(m, rightSide.get(r));     //adding the rest of the right side list
 				m++;
 				r++;
+				print(hello);
 			}
 				
 			while (l < middle) {
