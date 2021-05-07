@@ -6,6 +6,7 @@ public class TicTacToe {
 		System.out.println("Welcome to Tic Tac Toe Github!");
 		//nothing but a comment
 		//why did you add a comment man?
+		System.out.println("I added this too");
 	}
 
 }
