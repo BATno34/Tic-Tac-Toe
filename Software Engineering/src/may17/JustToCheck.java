@@ -11,7 +11,7 @@ public class JustToCheck {
 		//This is a comment
 		//shirley
 		System.out.println("Let's hope it works");
-		//test1
+		//test2
 	}
 
 }
