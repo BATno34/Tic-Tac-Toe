@@ -5,7 +5,7 @@ package may17;
  * @version 1.0, May 10, 2021
  */
 public class HumanPlayer {
-	private String symbol;
+	private String symbol; // the symbol that will be used to represent the player on the game board, typically X or O
 	private String name;
 	
 	
@@ -13,5 +13,12 @@ public class HumanPlayer {
 		this.name = name;
 		this.symbol = symbol;
 	}
-
+	
+	public String getName() {
+		return this.name;
+	}
+	
+	public String getSymbol() {
+		return this.symbol;
+	}
 }
