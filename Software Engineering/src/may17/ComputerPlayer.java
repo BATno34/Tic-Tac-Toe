@@ -42,10 +42,10 @@ public class ComputerPlayer{
 		int bestMove = spacesAvailable.get(0);
 		for (int i = 0; i < spacesAvailable.size(); i++){
 			int move = spacesAvailable.get(i);
-			spacesAvailable.remove(i);
+			spacesAvailable.remove(Integer.valueOf(move));
 			computerMoves.add(move);
 			int score = minimax(spacesAvailable, computerMoves, humanMoves, 0, false);
-			spacesAvailable.add(move);
+			spacesAvailable.add(i, move);
 			computerMoves.remove(Integer.valueOf(move));
 			if (score > bestScore){
 				bestScore = score;
@@ -76,7 +76,7 @@ public class ComputerPlayer{
 		ArrayList<Integer> col2 = new ArrayList<Integer>(Arrays.asList(2,5,8));
 		ArrayList<Integer> col3 = new ArrayList<Integer>(Arrays.asList(3,6,9));
 		ArrayList<Integer> cross1 = new ArrayList<Integer>(Arrays.asList(1,5,9));
-		ArrayList<Integer> cross2 = new ArrayList<Integer>(Arrays.asList(3,6,7));
+		ArrayList<Integer> cross2 = new ArrayList<Integer>(Arrays.asList(3,5,7));
 		ArrayList<ArrayList> winConditions = new ArrayList<ArrayList>();
 		winConditions.add(row1);
 		winConditions.add(row2);
@@ -151,7 +151,11 @@ public class ComputerPlayer{
 			spacesAvailable.remove(Integer.valueOf(humanMovePos));
 			humanMoves.add(humanMovePos);
 			board = changeBoard(board, humanMovePos, 'H');
-			
+			win = checkWinner(computerMoves, humanMoves);
+			if (win != "") {
+				System.out.println(win);
+				break;
+			}
 			int compMovePos = simpleMove(spacesAvailable, computerMoves);
 			board = changeBoard(board, compMovePos, 'C');
 			printBoard(board);
