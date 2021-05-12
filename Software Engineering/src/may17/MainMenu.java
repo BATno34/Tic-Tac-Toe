@@ -10,7 +10,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class mainMenu {
+public class MainMenu {
 
 	private JFrame frame;
 
