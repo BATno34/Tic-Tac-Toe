@@ -1,7 +1,6 @@
 package may17;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import java.awt.Font;
