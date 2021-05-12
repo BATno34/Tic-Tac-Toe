@@ -35,8 +35,31 @@ public class ComputerPlayer{
 		}
 	}
 	
-	public static int hardMove() {
-		return 0;
+	public static int hardMove(ArrayList<Integer> spacesAvailable, ArrayList<Integer> computerMoves,
+							   ArrayList<Integer> humanMoves ) {
+		int bestScore = -999;
+		int bestMove = spacesAvailable.get(0);
+		for (int i = 0; i < spacesAvailable.size(); i++){
+			int move = spacesAvailable.get(i);
+			spacesAvailable.remove(i);
+			computerMoves.add(move);
+			int score = minimax(spacesAvailable, computerMoves, humanMoves, 0, false);
+			spacesAvailable.add(move);
+			computerMoves.remove(computerMoves.size()-1);
+			if (score > bestScore){
+				bestScore = score;
+				bestMove = move;
+			}
+		}
+		spacesAvailable.remove(Integer.valueOf(bestMove));
+		return bestMove;
+	}
+	
+	public static int minimax(ArrayList<Integer> spacesAvailable, ArrayList<Integer> computerMoves,
+							  ArrayList<Integer> humanMoves, int depth, boolean isMax){
+		
+		String result = checkWinner(computerMoves, humanMoves);
+			
 	}
 	
 	//public static ArrayList<Integer> getComputerMoves(){
