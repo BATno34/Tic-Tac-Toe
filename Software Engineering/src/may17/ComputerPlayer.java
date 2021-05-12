@@ -26,12 +26,13 @@ public class ComputerPlayer{
 		return move;
 	}
 	
-	public static int medianMove(ArrayList<Integer> spacesAvailable, ArrayList<Integer> computerMoves) {
+	public static int medianMove(ArrayList<Integer> spacesAvailable, ArrayList<Integer> computerMoves,
+			 					 ArrayList<Integer> humanMoves) {
 		int levelChoice = (int)(Math.random() * 2);
 		if (levelChoice == 0) {
 			return simpleMove(spacesAvailable, computerMoves);
 		} else {
-			return hardMove();
+			return hardMove(spacesAvailable, computerMoves, humanMoves);
 		}
 	}
 	
@@ -45,13 +46,14 @@ public class ComputerPlayer{
 			computerMoves.add(move);
 			int score = minimax(spacesAvailable, computerMoves, humanMoves, 0, false);
 			spacesAvailable.add(move);
-			computerMoves.remove(computerMoves.size()-1);
+			computerMoves.remove(Integer.valueOf(move));
 			if (score > bestScore){
 				bestScore = score;
 				bestMove = move;
 			}
 		}
 		spacesAvailable.remove(Integer.valueOf(bestMove));
+		computerMoves.add(bestMove);
 		return bestMove;
 	}
 	
@@ -59,7 +61,7 @@ public class ComputerPlayer{
 							  ArrayList<Integer> humanMoves, int depth, boolean isMax){
 		
 		String result = checkWinner(computerMoves, humanMoves);
-			
+		return 0;
 	}
 	
 	//public static ArrayList<Integer> getComputerMoves(){
