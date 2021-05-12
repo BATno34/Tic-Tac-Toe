@@ -55,8 +55,8 @@ public class MainMenu {
 		btnStartButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();     //closes the frame
-				//MAKE GAME FRAME OBJECT
-				//MAKE GAME FRAME VISIBLE
+				InstructionsFrame instFrame = new InstructionsFrame();
+				instFrame.setVisible(true);
 			}
 		});
 		btnStartButton.setBounds(380, 173, 201, 65);
