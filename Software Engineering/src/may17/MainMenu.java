@@ -21,7 +21,7 @@ public class MainMenu {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					mainMenu window = new mainMenu();
+					MainMenu window = new MainMenu();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -33,7 +33,7 @@ public class MainMenu {
 	/**
 	 * Create the application.
 	 */
-	public mainMenu() {
+	public MainMenu() {
 		initialize();
 	}
 
