@@ -37,7 +37,7 @@ public class ComputerPlayer{
 	}
 	
 	public static int hardMove(ArrayList<Integer> spacesAvailable, ArrayList<Integer> computerMoves,
-							   ArrayList<Integer> humanMoves ) {
+							   ArrayList<Integer> humanMoves) {
 		int bestScore = -999;
 		int bestMove = spacesAvailable.get(0);
 		for (int i = 0; i < spacesAvailable.size(); i++){
@@ -61,7 +61,43 @@ public class ComputerPlayer{
 							  ArrayList<Integer> humanMoves, int depth, boolean isMax){
 		
 		String result = checkWinner(computerMoves, humanMoves);
-		return 0;
+		if (result != "") {
+			int overallScore = -999;
+			if (result == "Ops! The computer wins!") {
+				overallScore = 10;
+			} else if (result == "Wow, congrats! You win!") {
+				overallScore = -10;
+			} else if(result == "Draw!") {
+				overallScore = 0;
+			}
+			return overallScore;
+		}
+		
+		if (isMax) {
+			int bestScore = -999;
+			for (int i = 0; i < spacesAvailable.size(); i++){
+				int move = spacesAvailable.get(i);
+				spacesAvailable.remove(i);
+				computerMoves.add(move);
+				int score = minimax(spacesAvailable, computerMoves, humanMoves, depth+1, false);
+				spacesAvailable.add(i, move);
+				computerMoves.remove(Integer.valueOf(move));
+				bestScore = Math.max(score, bestScore);
+			}
+			return bestScore;
+		} else {
+			int bestScore = 999;
+			for (int i = 0; i < spacesAvailable.size(); i++){
+				int move = spacesAvailable.get(i);
+				spacesAvailable.remove(i);
+				humanMoves.add(move);
+				int score = minimax(spacesAvailable, computerMoves, humanMoves, depth+1, true);
+				spacesAvailable.add(i, move);
+				humanMoves.remove(Integer.valueOf(move));
+				bestScore = Math.min(score, bestScore);
+			}
+			return bestScore;
+		}
 	}
 	
 	//public static ArrayList<Integer> getComputerMoves(){
@@ -156,14 +192,14 @@ public class ComputerPlayer{
 				System.out.println(win);
 				break;
 			}
-			int compMovePos = simpleMove(spacesAvailable, computerMoves);
+			//int compMovePos = simpleMove(spacesAvailable, computerMoves);
+			int compMovePos = hardMove(spacesAvailable, computerMoves, humanMoves);
 			board = changeBoard(board, compMovePos, 'C');
 			printBoard(board);
 			win = checkWinner(computerMoves, humanMoves);
 			System.out.println(win);
 		}
 		
-	}
 		
-
+	}
 }
