@@ -128,9 +128,11 @@ public class ComputerPlayer{
 				return "Wow, congrats! You win!";
 			} else if (computerMoves.containsAll(list)) {
 				return "Ops! The computer wins!";
-			} else if (humanMoves.size() + computerMoves.size() == 9) {
-				return "Draw!";
 			}
+		}
+		
+		if (humanMoves.size() + computerMoves.size() == 9) {
+			return "Draw!";
 		}
 		
 		return "";
