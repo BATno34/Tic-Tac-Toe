@@ -66,8 +66,8 @@ public class MainMenu {
 		btnChange.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();     //closes the frame
-				//MAKE DIFICULTY PANEL OBJECT
-				//MAKE PANEL VISIBLE
+				DifficultyFrame diffFrame = new DifficultyFrame();
+				diffFrame.setVisible(true);
 
 			}
 		});
