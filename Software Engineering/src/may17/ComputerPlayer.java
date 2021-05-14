@@ -58,14 +58,14 @@ public class ComputerPlayer{
 	public static int minimax(ArrayList<Integer> spacesAvailable, ArrayList<Integer> computerMoves,
 							  ArrayList<Integer> humanMoves, int depth, boolean isMax){
 		
-		String result = checkWinner(computerMoves, humanMoves);
-		if (result != "") {
+		int result = checkWinner(computerMoves, humanMoves);
+		if (result != 4) {
 			int overallScore = -999;
-			if (result == "Ops! The computer wins!") {
+			if (result == 2) {
 				overallScore = 10;
-			} else if (result == "Wow, congrats! You win!") {
+			} else if (result == 1) {
 				overallScore = -10;
-			} else if(result == "Draw!") {
+			} else if(result == 3) {
 				overallScore = 0;
 			}
 			return overallScore;
@@ -102,7 +102,7 @@ public class ComputerPlayer{
 	//	return computerMoves;
 	//}
 	
-	public static String checkWinner(ArrayList<Integer> computerMoves, ArrayList<Integer> humanMoves) {
+	public static int checkWinner(ArrayList<Integer> computerMoves, ArrayList<Integer> humanMoves) {
 		ArrayList<Integer> row1 = new ArrayList<Integer>(Arrays.asList(1,2,3));
 		ArrayList<Integer> row2 = new ArrayList<Integer>(Arrays.asList(4,5,6));
 		ArrayList<Integer> row3 = new ArrayList<Integer>(Arrays.asList(7,8,9));
@@ -123,16 +123,16 @@ public class ComputerPlayer{
 		
 		for(ArrayList list: winConditions) {
 			if (humanMoves.containsAll(list)) {
-				return "Wow, congrats! You win!";
+				return 1;     //player wins
 			} else if (computerMoves.containsAll(list)) {
-				return "Ops! The computer wins!";
+				return 2;     //computer wins
 			}
 		}
 		
 		if (humanMoves.size() + computerMoves.size() == 9) {
-			return "Draw!";
+			return 3;     //draw
 		}
 		
-		return "";
+		return 4;     //no conclusion to make so far
 	}
 }
