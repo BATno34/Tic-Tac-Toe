@@ -16,6 +16,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
 
 public class InstructionsFrame extends JFrame {
 
@@ -23,6 +24,8 @@ public class InstructionsFrame extends JFrame {
 	private JRadioButton rdbtnO;
 	private JRadioButton rdbtnX;
 	private JButton btnContinue;
+	private JTextField nameField;
+	JLabel lblEnterYourName;
 
 	/**
 	 * Launch the application.
@@ -82,7 +85,7 @@ public class InstructionsFrame extends JFrame {
 		lblChooseYourSymbol.setVerticalAlignment(SwingConstants.TOP);
 		lblChooseYourSymbol.setHorizontalAlignment(SwingConstants.LEFT);
 		lblChooseYourSymbol.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblChooseYourSymbol.setBounds(34, 203, 522, 29);
+		lblChooseYourSymbol.setBounds(34, 203, 225, 29);
 		contentPane.add(lblChooseYourSymbol);
 		
 		rdbtnX = new JRadioButton("X");
@@ -104,14 +107,24 @@ public class InstructionsFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					if(rdbtnO.isSelected()) {
-						//set player symbol to O and AI symbol to X
+						GameFrame.user.setSymbol("O");
+						GameFrame.ai.setSymbol("X");
 					} else if(rdbtnX.isSelected()) {
-						//set player symbol to X and AI symbol O
+						GameFrame.user.setSymbol("X");
+						GameFrame.ai.setSymbol("O");
 					} else {
 						throw new Exception();
 					}
+					
+					if(lblEnterYourName.getText().equals("")) {
+						throw new Exception();
+					} else {
+						GameFrame.user.setName(lblEnterYourName.getText());
+					}
+					
 					dispose();
-					//start game window
+					GameFrame gameFrame = new GameFrame();
+					gameFrame.setVisible(true);
 				} catch(Exception exc) {
 					JOptionPane.showMessageDialog(btnContinue, "Invalid Input!");
 				}
@@ -120,5 +133,17 @@ public class InstructionsFrame extends JFrame {
 		btnContinue.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnContinue.setBounds(222, 315, 156, 35);
 		contentPane.add(btnContinue);
+		
+		lblEnterYourName = new JLabel("Enter your name:");
+		lblEnterYourName.setVerticalAlignment(SwingConstants.TOP);
+		lblEnterYourName.setHorizontalAlignment(SwingConstants.LEFT);
+		lblEnterYourName.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		lblEnterYourName.setBounds(273, 203, 273, 29);
+		contentPane.add(lblEnterYourName);
+		
+		nameField = new JTextField();
+		nameField.setBounds(273, 266, 218, 23);
+		contentPane.add(nameField);
+		nameField.setColumns(10);
 	}
 }

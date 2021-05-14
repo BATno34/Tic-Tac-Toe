@@ -11,6 +11,7 @@ import javax.swing.SwingConstants;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -30,10 +31,24 @@ public class GameFrame extends JFrame {
 	private ButtonGroup gridButtons;
 	
 	private JPanel contentPane;
+	
+	public static HumanPlayer user = new HumanPlayer("","");
+	public static ComputerPlayer ai = new ComputerPlayer();
+	
+	public static ArrayList spacesAvailable = new ArrayList();
+	public static ArrayList humanMoves = new ArrayList();
+	public static ArrayList computerMoves = new ArrayList();
+	
+	public static int difficulty = 2;
 
 	/**
 	 * Launch the application.
 	 */
+	
+	public static void setDifficulty(int diff) {
+		difficulty = diff;
+	}
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

@@ -22,6 +22,14 @@ public class HumanPlayer {
 		return this.symbol;
 	}
 	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public void setSymbol(String symbol) {
+		this.symbol = symbol;
+	}
+	
 	public void makeMove(int square) {
 		//change this later to allow the specified square in the game grid to be changed to the player's symbol
 	}
