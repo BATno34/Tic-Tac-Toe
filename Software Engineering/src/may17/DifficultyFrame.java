@@ -7,8 +7,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import musicGUI.MusicDatabase;
-
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -23,6 +21,9 @@ import java.awt.EventQueue;
 public class DifficultyFrame extends JFrame {
 
 	private JPanel contentPane;
+	private JButton btnEasy;
+	private JButton btnMedium;
+	private JButton btnHard;
 
 	/**
 	 * Launch the application.
@@ -90,7 +91,7 @@ public class DifficultyFrame extends JFrame {
 		
 		//Buttons
 		
-		JButton btnEasy = new JButton("Easy");
+		btnEasy = new JButton("Easy");
 		btnEasy.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -103,7 +104,7 @@ public class DifficultyFrame extends JFrame {
 		btnEasy.setBounds(220, 150, 200, 60);
 		contentPane.add(btnEasy);
 		
-		JButton btnMedium = new JButton("Medium");
+		btnMedium = new JButton("Medium");
 		btnMedium.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -118,7 +119,7 @@ public class DifficultyFrame extends JFrame {
 		btnMedium.setBounds(220, 250, 200, 60);
 		contentPane.add(btnMedium);
 		
-		JButton btnHard = new JButton("Hard");
+		btnHard = new JButton("Hard");
 		btnHard.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
