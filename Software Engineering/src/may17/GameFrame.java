@@ -110,9 +110,12 @@ public class GameFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public GameFrame() {
+		spacesAvailable.clear();
 		for(int i = 1; i <=9; i++) {
 			spacesAvailable.add(i);
 		}
+		humanMoves.clear();
+		computerMoves.clear();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 450);
@@ -324,14 +327,7 @@ public class GameFrame extends JFrame {
 					int gameStatus = ComputerPlayer.checkWinner(computerMoves, humanMoves);
 					if(gameStatus!=4) {
 						EndFrame.gameOutcome = gameStatus;
-						
-						spacesAvailable.clear();
-						for(int i = 1; i <=9; i++) {
-							spacesAvailable.add(i);
-						}
-						humanMoves.clear();
-						computerMoves.clear();
-						
+												
 						dispose();
 						EndFrame endFrame = new EndFrame();
 						endFrame.setVisible(true);
@@ -361,13 +357,6 @@ public class GameFrame extends JFrame {
 						gameStatus = ComputerPlayer.checkWinner(computerMoves, humanMoves);
 						if(gameStatus!=4) {
 							EndFrame.gameOutcome = gameStatus;
-							
-							spacesAvailable.clear();
-							for(int i = 1; i <=9; i++) {
-								spacesAvailable.add(i);
-							}
-							humanMoves.clear();
-							computerMoves.clear();
 							
 							dispose();
 							EndFrame endFrame = new EndFrame();

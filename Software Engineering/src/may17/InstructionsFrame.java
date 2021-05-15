@@ -108,10 +108,14 @@ public class InstructionsFrame extends JFrame {
 				try {
 					if(rdbtnO.isSelected()) {
 						GameFrame.user.setSymbol("O");
+						EndFrame.userSymbol = "O";
 						GameFrame.ai.setSymbol("X");
+						EndFrame.aiSymbol = "X";
 					} else if(rdbtnX.isSelected()) {
 						GameFrame.user.setSymbol("X");
+						EndFrame.userSymbol = "X";
 						GameFrame.ai.setSymbol("O");
+						EndFrame.aiSymbol = "O";
 					} else {
 						throw new Exception();
 					}
