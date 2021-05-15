@@ -61,6 +61,7 @@ public class GameFrame extends JFrame {
 	public static ArrayList<Integer> computerMoves = new ArrayList<Integer>();
 	
 	public static int difficulty = 2;
+	public static char whoStarts = 'p';
 	private JLabel lblDiffLevel;
 
 	public static int aiMove() {
@@ -81,6 +82,10 @@ public class GameFrame extends JFrame {
 	
 	public static void setDifficulty(int diff) {
 		difficulty = diff;
+	}
+	
+	public static void setWhoStarts (char start) {
+		whoStarts = start;
 	}
 	
 	public static void updateBoard() {
@@ -272,10 +277,44 @@ public class GameFrame extends JFrame {
 		lblTurn.setBounds(63, 359, 208, 26);
 		contentPane.add(lblTurn);
 		
+		if (whoStarts == 'c') {
+			int aiMove = aiMove();
+			if(aiMove == 1) {
+				rdbtn1.setVisible(false);
+			} else if(aiMove == 2) {
+				rdbtn2.setVisible(false);
+			} else if(aiMove == 3) {
+				rdbtn3.setVisible(false);
+			} else if(aiMove == 4) {
+				rdbtn4.setVisible(false);
+			} else if(aiMove == 5) {
+				rdbtn5.setVisible(false);
+			} else if(aiMove == 6) {
+				rdbtn6.setVisible(false);
+			} else if(aiMove == 7) {
+				rdbtn7.setVisible(false);
+			} else if(aiMove == 8) {
+				rdbtn8.setVisible(false);
+			} else if(aiMove == 9) {
+				rdbtn9.setVisible(false);
+			} 
+			
+			updateBoard();
+			int gameStatus = ComputerPlayer.checkWinner(computerMoves, humanMoves);
+			if(gameStatus!=4) {
+				EndFrame.gameOutcome = gameStatus;
+				
+				dispose();
+				EndFrame endFrame = new EndFrame();
+				endFrame.setVisible(true);
+			}
+		}
+		
 		btnConfirm = new JButton("Confirm Move");
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
+					
 					int move = -1;
 					if(rdbtn1.isSelected()) {
 						move = 1;
@@ -364,6 +403,8 @@ public class GameFrame extends JFrame {
 							endFrame.setVisible(true);
 						}
 					}
+					
+						
 				} catch (Exception exc) {
 					JOptionPane.showMessageDialog(btnConfirm, "Invalid input!");
 				}

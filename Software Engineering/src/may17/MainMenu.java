@@ -77,6 +77,7 @@ public class MainMenu {
 		JButton btnQuitGame = new JButton("Quit Game");
 		btnQuitGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Thank you for playing!");
 				frame.dispose();     //closes the frame
 			}
 		});

@@ -37,7 +37,7 @@ public class EndFrame extends JFrame {
 		
 	public static ArrayList<JLabel> gridLabels;
 	
-	private JButton btnNo;
+	private JButton btnReturnToMainMenu;
 	
 	public static void updateBoard() {
 		for(int i = 0; i < GameFrame.humanMoves.size(); i++) {
@@ -86,7 +86,7 @@ public class EndFrame extends JFrame {
 		JLabel lblOutcome = new JLabel("");
 		lblOutcome.setHorizontalAlignment(SwingConstants.CENTER);
 		lblOutcome.setFont(new Font("Times New Roman", Font.PLAIN, 24));
-		lblOutcome.setBounds(185, 404, 409, 53);
+		lblOutcome.setBounds(209, 404, 409, 53);
 		contentPane.add(lblOutcome);
 		
 		if(gameOutcome == 1) {
@@ -97,34 +97,34 @@ public class EndFrame extends JFrame {
 			lblOutcome.setText("You tied with the computer!");
 		}
 		
-		JLabel lblPlayAgain = new JLabel("Play again?");
-		lblPlayAgain.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPlayAgain.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		lblPlayAgain.setBounds(185, 451, 409, 53);
-		contentPane.add(lblPlayAgain);
+		JButton btnPlayAgain = new JButton("Play Again");
+		btnPlayAgain.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				if (GameFrame.whoStarts == 'p')
+					GameFrame.setWhoStarts('c');
+				else
+					GameFrame.setWhoStarts('p');
+				
+				GameFrame game = new GameFrame();
+				game.setVisible(true);
+			}
+		});
+		btnPlayAgain.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnPlayAgain.setBounds(166, 468, 189, 35);
+		contentPane.add(btnPlayAgain);
 		
-		JButton btnYes = new JButton("Yes");
-		btnYes.addActionListener(new ActionListener() {
+		btnReturnToMainMenu = new JButton("Return to Main Menu");
+		btnReturnToMainMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				MainMenu main = new MainMenu();
 				main.frame.setVisible(true);
 			}
 		});
-		btnYes.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		btnYes.setBounds(185, 515, 156, 35);
-		contentPane.add(btnYes);
-		
-		btnNo = new JButton("No");
-		btnNo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(btnNo, "Thank you for playing!");
-				dispose();
-			}
-		});
-		btnNo.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		btnNo.setBounds(438, 515, 156, 35);
-		contentPane.add(btnNo);
+		btnReturnToMainMenu.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnReturnToMainMenu.setBounds(445, 468, 189, 35);
+		contentPane.add(btnReturnToMainMenu);
 		
 		JSeparator separator1 = new JSeparator();
 		separator1.setOrientation(SwingConstants.VERTICAL);
