@@ -95,7 +95,7 @@ public class InstructionsFrame extends JFrame {
 		
 		rdbtnO = new JRadioButton("O");
 		rdbtnO.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-		rdbtnO.setBounds(178, 266, 109, 23);
+		rdbtnO.setBounds(178, 266, 50, 23);
 		contentPane.add(rdbtnO);
 		
 		ButtonGroup group = new ButtonGroup();
@@ -119,7 +119,7 @@ public class InstructionsFrame extends JFrame {
 					if(lblEnterYourName.getText().equals("")) {
 						throw new Exception();
 					} else {
-						GameFrame.user.setName(lblEnterYourName.getText());
+						GameFrame.user.setName(nameField.getText());
 					}
 					
 					dispose();

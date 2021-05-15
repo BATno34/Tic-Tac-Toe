@@ -1,4 +1,7 @@
 package may17;
+
+import java.util.ArrayList;
+
 /**
  * A class to create a human player object, that would be used to represent the user and perform certain moves.
  * @author Shreyas
@@ -30,7 +33,9 @@ public class HumanPlayer {
 		this.symbol = symbol;
 	}
 	
-	public void makeMove(int square) {
-		//change this later to allow the specified square in the game grid to be changed to the player's symbol
+	public void makeMove(ArrayList<Integer> spacesAvailable, ArrayList<Integer> humanMoves, int chosenMove) {
+		int moveIndex = spacesAvailable.indexOf(chosenMove);
+		spacesAvailable.remove(moveIndex);
+		humanMoves.add(chosenMove);
 	}
 }

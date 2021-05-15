@@ -98,10 +98,6 @@ public class ComputerPlayer{
 		}
 	}
 	
-	//public static ArrayList<Integer> getComputerMoves(){
-	//	return computerMoves;
-	//}
-	
 	public static int checkWinner(ArrayList<Integer> computerMoves, ArrayList<Integer> humanMoves) {
 		ArrayList<Integer> row1 = new ArrayList<Integer>(Arrays.asList(1,2,3));
 		ArrayList<Integer> row2 = new ArrayList<Integer>(Arrays.asList(4,5,6));
