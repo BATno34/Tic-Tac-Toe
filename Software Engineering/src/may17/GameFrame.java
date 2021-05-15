@@ -61,6 +61,7 @@ public class GameFrame extends JFrame {
 	public static ArrayList<Integer> computerMoves = new ArrayList<Integer>();
 	
 	public static int difficulty = 2;
+	private JLabel lblDiffLevel;
 
 	public static int aiMove() {
 		int move = 0;
@@ -371,5 +372,18 @@ public class GameFrame extends JFrame {
 		btnConfirm.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		btnConfirm.setBounds(223, 377, 154, 23);
 		contentPane.add(btnConfirm);
+		
+		lblDiffLevel = new JLabel("Difficulty Level: ");
+		lblDiffLevel.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblDiffLevel.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		lblDiffLevel.setBounds(359, 359, 208, 26);
+		if(difficulty == 1) {
+			lblDiffLevel.setText("Difficulty Level: Simple");
+		} else if(difficulty == 2) {
+			lblDiffLevel.setText("Difficulty Level: Median");
+		} else {
+			lblDiffLevel.setText("Difficulty Level: Hard");
+		}
+		contentPane.add(lblDiffLevel);
 	}
 }
