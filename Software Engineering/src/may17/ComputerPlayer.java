@@ -26,7 +26,7 @@ public class ComputerPlayer{
 	
 	public static int medianMove(ArrayList<Integer> spacesAvailable, ArrayList<Integer> computerMoves,
 			 					 ArrayList<Integer> humanMoves) {
-		int levelChoice = (int)(Math.random() * 2);
+		int levelChoice = (int)(Math.random() * 3);
 		if (levelChoice == 0) {
 			return simpleMove(spacesAvailable, computerMoves);
 		} else {

@@ -419,9 +419,9 @@ public class GameFrame extends JFrame {
 		lblDiffLevel.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		lblDiffLevel.setBounds(359, 359, 208, 26);
 		if(difficulty == 1) {
-			lblDiffLevel.setText("Difficulty Level: Simple");
+			lblDiffLevel.setText("Difficulty Level: Easy");
 		} else if(difficulty == 2) {
-			lblDiffLevel.setText("Difficulty Level: Median");
+			lblDiffLevel.setText("Difficulty Level: Medium");
 		} else {
 			lblDiffLevel.setText("Difficulty Level: Hard");
 		}
