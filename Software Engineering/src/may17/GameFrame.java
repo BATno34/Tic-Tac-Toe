@@ -414,6 +414,7 @@ public class GameFrame extends JFrame {
 		btnConfirm.setBounds(223, 377, 154, 23);
 		contentPane.add(btnConfirm);
 		
+		//Display the diiculty level
 		lblDiffLevel = new JLabel("Difficulty Level: ");
 		lblDiffLevel.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblDiffLevel.setFont(new Font("Times New Roman", Font.PLAIN, 14));

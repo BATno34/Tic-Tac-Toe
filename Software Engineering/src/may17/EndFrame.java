@@ -217,6 +217,7 @@ public class EndFrame extends JFrame {
 		contentPane.add(lbl8);
 		contentPane.add(lbl9);
 		
+		//Display the user's and ai's symbol
 		JLabel userSymbolDisplay = new JLabel("User:");
 		userSymbolDisplay.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		userSymbolDisplay.setBounds(88, 284, 111, 16);
