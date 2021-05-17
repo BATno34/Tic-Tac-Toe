@@ -100,8 +100,7 @@ public class DifficultyFrame extends JFrame {
 		btnEasy = new JButton("Easy");
 		btnEasy.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				GameFrame.setDifficulty(1);
-				
+				GameFrame.setDifficulty(1); //change difficulty to easy and display message
 				JOptionPane.showMessageDialog(btnEasy, "AI Difficulty set to Easy");
 			}
 		});
@@ -112,7 +111,7 @@ public class DifficultyFrame extends JFrame {
 		btnMedium = new JButton("Medium");
 		btnMedium.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				GameFrame.setDifficulty(2);
+				GameFrame.setDifficulty(2); //change difficulty to medium and display message
 				
 				JOptionPane.showMessageDialog(btnMedium, "AI Difficulty set to Medium");
 
@@ -126,7 +125,7 @@ public class DifficultyFrame extends JFrame {
 		btnHard = new JButton("Hard");
 		btnHard.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				GameFrame.setDifficulty(3);
+				GameFrame.setDifficulty(3); //set difficulty to hard and display message
 				
 				JOptionPane.showMessageDialog(btnHard, "AI Difficulty set to Hard");
 
@@ -141,7 +140,7 @@ public class DifficultyFrame extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				MainMenu window = new MainMenu();
+				MainMenu window = new MainMenu(); //return to main menu
 				window.frame.setVisible(true);
 				
 			}
