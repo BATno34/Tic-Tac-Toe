@@ -31,10 +31,10 @@ public class InstructionsFrame extends JFrame {
 	private JRadioButton rdbtnX;
 	private JButton btnContinue;
 	private JTextField nameField;
-	JLabel lblEnterYourName;
+	private JLabel lblEnterYourName;
 
 	/**
-	 * Launch the application.
+	 * Main method to launch the application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -60,12 +60,14 @@ public class InstructionsFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		//labels
 		JLabel lblTitle = new JLabel("Tic Tac Toe Instructions");
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		lblTitle.setBounds(126, 10, 347, 57);
 		contentPane.add(lblTitle);
 		
+		//instructions labels
 		JLabel lblInstructions = new JLabel("Welcome to Tic Tac Toe! In this game, you will take turns with a computer marking");
 		lblInstructions.setVerticalAlignment(SwingConstants.TOP);
 		lblInstructions.setHorizontalAlignment(SwingConstants.LEFT);
@@ -94,6 +96,7 @@ public class InstructionsFrame extends JFrame {
 		lblChooseYourSymbol.setBounds(34, 203, 225, 29);
 		contentPane.add(lblChooseYourSymbol);
 		
+		//buttons to choose symbol
 		rdbtnX = new JRadioButton("X");
 		rdbtnX.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		rdbtnX.setBounds(34, 265, 109, 23);
@@ -108,10 +111,12 @@ public class InstructionsFrame extends JFrame {
 		group.add(rdbtnO);
 		group.add(rdbtnX);
 		
+		//button to continue to the main game
 		btnContinue = new JButton("Continue to Game");
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
+					//sets the user's and AI's symbol based on the user's choice
 					if(rdbtnO.isSelected()) {
 						GameFrame.user.setSymbol("O");
 						EndFrame.userSymbol = "O";
@@ -122,14 +127,14 @@ public class InstructionsFrame extends JFrame {
 						EndFrame.userSymbol = "X";
 						GameFrame.ai.setSymbol("O");
 						EndFrame.aiSymbol = "O";
-					} else {
+					} else { // if a symbol is not selected
 						throw new Exception();
 					}
 					
-					if(lblEnterYourName.getText().equals("")) {
+					if(lblEnterYourName.getText().equals("")) { //if user does not enter a name
 						throw new Exception();
 					} else {
-						GameFrame.user.setName(nameField.getText());
+						GameFrame.user.setName(nameField.getText()); //set the user's name to the input
 					}
 					
 					dispose();
