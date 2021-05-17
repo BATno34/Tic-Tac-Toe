@@ -31,6 +31,7 @@ public class EndFrame extends JFrame {
 	public static String userSymbol;
 	public static String aiSymbol;
 	
+	//labels for grid squares
 	private JLabel lbl1;
 	private JLabel lbl2;
 	private JLabel lbl3;
@@ -45,19 +46,22 @@ public class EndFrame extends JFrame {
 	
 	private JButton btnReturnToMainMenu;
 	
+	/**
+	 * Method to update the gameBoard according to the human and computer moves
+	 */
 	public static void updateBoard() {
-		for(int i = 0; i < GameFrame.humanMoves.size(); i++) {
+		for(int i = 0; i < GameFrame.humanMoves.size(); i++) { //check all human moves
 			int square = GameFrame.humanMoves.get(i);
 			gridLabels.get(square-1).setText(userSymbol);
 		}
-		for(int i = 0; i < GameFrame.computerMoves.size(); i++) {
+		for(int i = 0; i < GameFrame.computerMoves.size(); i++) { //check all computer moves
 			int square = GameFrame.computerMoves.get(i);
 			gridLabels.get(square-1).setText(aiSymbol);
 		}
 	}
 
 	/**
-	 * Launch the application.
+	 * Main method to launch the application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -83,6 +87,7 @@ public class EndFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		//labels
 		JLabel lblGameOver = new JLabel("GAME OVER");
 		lblGameOver.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGameOver.setFont(new Font("Times New Roman", Font.BOLD, 32));
@@ -95,6 +100,7 @@ public class EndFrame extends JFrame {
 		lblOutcome.setBounds(209, 404, 409, 53);
 		contentPane.add(lblOutcome);
 		
+		//set the text of lblOutcome based on the outcome of the game
 		if(gameOutcome == 1) {
 			lblOutcome.setText("You won!");
 		} else if(gameOutcome == 2) {
@@ -106,7 +112,8 @@ public class EndFrame extends JFrame {
 		JButton btnPlayAgain = new JButton("Play Again");
 		btnPlayAgain.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+				dispose(); 
+				//start a new game and alternate the player who starts
 				if (GameFrame.whoStarts == 'p')
 					GameFrame.setWhoStarts('c');
 				else
@@ -122,7 +129,7 @@ public class EndFrame extends JFrame {
 		
 		btnReturnToMainMenu = new JButton("Return to Main Menu");
 		btnReturnToMainMenu.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) { //return to the mainMenu frame
 				dispose();
 				MainMenu main = new MainMenu();
 				main.frame.setVisible(true);
@@ -132,6 +139,7 @@ public class EndFrame extends JFrame {
 		btnReturnToMainMenu.setBounds(445, 468, 189, 35);
 		contentPane.add(btnReturnToMainMenu);
 		
+		//grid lines
 		JSeparator separator1 = new JSeparator();
 		separator1.setOrientation(SwingConstants.VERTICAL);
 		separator1.setForeground(Color.BLACK);
@@ -154,6 +162,7 @@ public class EndFrame extends JFrame {
 		separator1_1_1.setBounds(249, 271, 310, 15);
 		contentPane.add(separator1_1_1);
 		
+		//grid labels
 		lbl2 = new JLabel("");
 		lbl2.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl2.setFont(new Font("Arial", Font.BOLD, 36));
