@@ -151,7 +151,7 @@ public class ComputerPlayer{
 	/** Check if the resut of the game
 	 * @param computerMoves				The ArrayList that contains all computer's moves so far
 	 * @param humanMoves				The ArrayList that contains all human's moves so far
-	 * @return							Use integer value of represent the result
+	 * @return							Use integer value to represent the result
 	 */
 	public static int checkWinner(ArrayList<Integer> computerMoves, ArrayList<Integer> humanMoves) {
 		//Make an ArrayList that contains ArrayLists to store all possible winning conditions
