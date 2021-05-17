@@ -30,6 +30,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class GameFrame extends JFrame {
+	//grid buttons
 	private JRadioButton rdbtn1;
 	private JRadioButton rdbtn2;
 	private JRadioButton rdbtn3;
@@ -42,6 +43,7 @@ public class GameFrame extends JFrame {
 	
 	private JLabel lblTurn;
 	
+	//grid labels
 	private JLabel lbl1;
 	private JLabel lbl2;
 	private JLabel lbl3;
@@ -60,9 +62,11 @@ public class GameFrame extends JFrame {
 	
 	private JPanel contentPane;
 	
+	//create player objects
 	public static HumanPlayer user = new HumanPlayer("","");
 	public static ComputerPlayer ai = new ComputerPlayer();
 	
+	//arrayLists for moves and spaces
 	public static ArrayList<Integer> spacesAvailable = new ArrayList<Integer>();
 	public static ArrayList<Integer> humanMoves = new ArrayList<Integer>();
 	public static ArrayList<Integer> computerMoves = new ArrayList<Integer>();
@@ -73,6 +77,7 @@ public class GameFrame extends JFrame {
 
 	public static int aiMove() {
 		int move = 0;
+		//determine the move to be performed based on the difficulty level chosen
 		if(difficulty == 1) {
 			move = ComputerPlayer.simpleMove(spacesAvailable, computerMoves);
 		} else if(difficulty == 2) {
@@ -95,17 +100,23 @@ public class GameFrame extends JFrame {
 		whoStarts = start;
 	}
 	
+	/**
+	 * Method to update the gameBoard according to the human and computer moves
+	 */
 	public static void updateBoard() {
-		for(int i = 0; i < humanMoves.size(); i++) {
+		for(int i = 0; i < humanMoves.size(); i++) { //check all human moves
 			int square = humanMoves.get(i);
 			gridLabels.get(square-1).setText(user.getSymbol());
 		}
-		for(int i = 0; i < computerMoves.size(); i++) {
+		for(int i = 0; i < computerMoves.size(); i++) { //check all computer moves
 			int square = computerMoves.get(i);
 			gridLabels.get(square-1).setText(ai.getSymbol());
 		}
 	}
 	
+	/**
+	 * main method to launch application
+	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -123,7 +134,8 @@ public class GameFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public GameFrame() {
-		spacesAvailable.clear();
+		//reset spacesAvailable and the player moves at the start of the game
+		spacesAvailable.clear(); 
 		for(int i = 1; i <=9; i++) {
 			spacesAvailable.add(i);
 		}
@@ -137,6 +149,7 @@ public class GameFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		//grid buttons for choosing the user's move
 		rdbtn9 = new JRadioButton("");
 		rdbtn9.setBounds(383, 280, 21, 23);
 		contentPane.add(rdbtn9);
@@ -185,6 +198,7 @@ public class GameFrame extends JFrame {
 		gridButtons.add(rdbtn8);
 		gridButtons.add(rdbtn9);
 		
+		//grid lines
 		JSeparator separator1 = new JSeparator();
 		separator1.setForeground(Color.BLACK);
 		separator1.setOrientation(SwingConstants.VERTICAL);
@@ -207,6 +221,7 @@ public class GameFrame extends JFrame {
 		separator1_1_1.setBounds(145, 243, 310, 15);
 		contentPane.add(separator1_1_1);
 		
+		//grid labels (empty at the start, but replaced with the symbol of the player who selects the space)
 		lbl2 = new JLabel("");
 		lbl2.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl2.setFont(new Font("Arial", Font.BOLD, 36));
@@ -284,6 +299,7 @@ public class GameFrame extends JFrame {
 		lblTurn.setBounds(63, 359, 208, 26);
 		contentPane.add(lblTurn);
 		
+		//if the computer is starting, make a move before allowing the user to take their turn
 		if (whoStarts == 'c') {
 			int aiMove = aiMove();
 			if(aiMove == 1) {
@@ -307,7 +323,7 @@ public class GameFrame extends JFrame {
 			} 
 			
 			updateBoard();
-			int gameStatus = ComputerPlayer.checkWinner(computerMoves, humanMoves);
+			int gameStatus = ComputerPlayer.checkWinner(computerMoves, humanMoves); //check win status
 			if(gameStatus!=4) {
 				EndFrame.gameOutcome = gameStatus;
 				
@@ -319,10 +335,11 @@ public class GameFrame extends JFrame {
 		
 		btnConfirm = new JButton("Confirm Move");
 		btnConfirm.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) { //when confirm button is pressed, perform the move
 				try {
-					
 					int move = -1;
+					
+					//check each radio button to determine which one is selected
 					if(rdbtn1.isSelected()) {
 						move = 1;
 						rdbtn1.setSelected(false);
@@ -359,27 +376,30 @@ public class GameFrame extends JFrame {
 						move = 9;
 						rdbtn9.setSelected(false);
 						rdbtn9.setVisible(false);
-					} else {
+					} else { //if none selected
 						throw new Exception();
 					}
 					
-					if(spacesAvailable.indexOf(move) == -1) {
+					if(spacesAvailable.indexOf(move) == -1) { //if somehow a space that has already been used is chosen
 						throw new Exception();
 					} else {
 						user.makeMove(spacesAvailable, humanMoves, move);
 					}
 					
+					//update board after the user's move
 					updateBoard();
 					
 					int gameStatus = ComputerPlayer.checkWinner(computerMoves, humanMoves);
-					if(gameStatus!=4) {
+					if(gameStatus!=4) { //if game is finished
 						EndFrame.gameOutcome = gameStatus;
 												
 						dispose();
 						EndFrame endFrame = new EndFrame();
 						endFrame.setVisible(true);
-					} else {
+					} else { //if game is not finished
 						int aiMove = aiMove();
+						
+						//check what the ai move is and remove the chosen button
 						if(aiMove == 1) {
 							rdbtn1.setVisible(false);
 						} else if(aiMove == 2) {
@@ -401,7 +421,7 @@ public class GameFrame extends JFrame {
 						} 
 						
 						updateBoard();
-						gameStatus = ComputerPlayer.checkWinner(computerMoves, humanMoves);
+						gameStatus = ComputerPlayer.checkWinner(computerMoves, humanMoves); //check win after ai move
 						if(gameStatus!=4) {
 							EndFrame.gameOutcome = gameStatus;
 							
@@ -421,7 +441,7 @@ public class GameFrame extends JFrame {
 		btnConfirm.setBounds(223, 377, 154, 23);
 		contentPane.add(btnConfirm);
 		
-		//Display the diiculty level
+		//Display the difficulty level
 		lblDiffLevel = new JLabel("Difficulty Level: ");
 		lblDiffLevel.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblDiffLevel.setFont(new Font("Times New Roman", Font.PLAIN, 14));
