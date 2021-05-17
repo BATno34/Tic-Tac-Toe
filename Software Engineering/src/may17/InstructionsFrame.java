@@ -18,6 +18,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 
+/**
+ * A frame to display instructions for the game, allow the user to choose their symbol, and to enter their name.
+ * @author Ardavan, Justin, Shirley, Shreyas
+ * @version May 16 2021
+ */
+
 public class InstructionsFrame extends JFrame {
 
 	private JPanel contentPane;

@@ -1,5 +1,11 @@
 package may17;
 
+/**
+ * Frame for the user to choose the difficulty of the game.
+ * @author Ardavan, Justin, Shirley, Shreyas
+ * @version May 16 2021
+ */
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 

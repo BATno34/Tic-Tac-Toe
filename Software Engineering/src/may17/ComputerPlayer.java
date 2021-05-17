@@ -3,8 +3,7 @@ package may17;
 /**
  * A class to create a computer player object.
  * The class mainly calculates moves and stores the symbol that represents the computer
- * @author Shirley
- * @editor Ardavan and Shreyas
+ * @author Ardavan, Justin, Shirley, Shreyas
  * @version May 16 2021
  */
 

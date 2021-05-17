@@ -1,5 +1,11 @@
 package may17;
 
+/**
+ * Frame to display the outcome of the game (win, lose, or tie), as well as the final gameboard
+ * @author Ardavan, Justin, Shirley, Shreyas
+ * @version May 16 2021
+ */
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 

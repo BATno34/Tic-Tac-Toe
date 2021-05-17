@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 /**
  * A class to create a human player object, that would be used to represent the user and perform certain moves.
- * @author Shreyas
- * @version 1.0, May 10, 2021
+ * @author Ardavan, Justin, Shirley, Shreyas
+ * @version 1.2, May 15, 2021
  */
 public class HumanPlayer {
 	private String symbol; // the symbol that will be used to represent the player on the game board, typically X or O

@@ -1,5 +1,12 @@
 package may17;
 
+/**
+ * The main gameFrame, frame in which the game itself takes place
+ * Determines user input to perform the actions required in the game.
+ * @author Ardavan, Justin, Shirley, Shreyas
+ * @version May 16 2021
+ */
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 

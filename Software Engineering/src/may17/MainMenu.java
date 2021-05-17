@@ -1,5 +1,12 @@
 package may17;
 
+/**
+ * The starting application window for the game, used as a Main Menu
+ * Starting point (main file) for the rest of the game
+ * @author Ardavan, Justin, Shirley, Shreyas
+ * @version May 16 2021
+ */
+
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
