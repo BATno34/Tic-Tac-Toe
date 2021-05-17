@@ -62,7 +62,7 @@ public class MainMenu {
 		btnStartButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();     //closes the frame
-				InstructionsFrame instFrame = new InstructionsFrame();
+				InstructionsFrame instFrame = new InstructionsFrame(); //creates new frame
 				instFrame.setVisible(true);
 			}
 		});
@@ -73,7 +73,7 @@ public class MainMenu {
 		btnChange.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();     //closes the frame
-				DifficultyFrame diffFrame = new DifficultyFrame();
+				DifficultyFrame diffFrame = new DifficultyFrame();//creates new frame
 				diffFrame.setVisible(true);
 
 			}
