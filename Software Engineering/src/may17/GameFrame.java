@@ -75,6 +75,10 @@ public class GameFrame extends JFrame {
 	public static char whoStarts = 'p';
 	private JLabel lblDiffLevel;
 
+	/**
+	 * Performs a move for the computer based on the selected difficulty
+	 * @return the space that the ai chose
+	 */
 	public static int aiMove() {
 		int move = 0;
 		//determine the move to be performed based on the difficulty level chosen
@@ -89,13 +93,17 @@ public class GameFrame extends JFrame {
 	}
 	
 	/**
-	 * Launch the application.
+	 * change the difficulty of the ai	
+	 * @param diff, the difficulty for the ai to be changed to
 	 */
-	
 	public static void setDifficulty(int diff) {
 		difficulty = diff;
 	}
 	
+	/**
+	 * change the player that starts the game
+	 * @param start, the player that will start
+	 */
 	public static void setWhoStarts (char start) {
 		whoStarts = start;
 	}
